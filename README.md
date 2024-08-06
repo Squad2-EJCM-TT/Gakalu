@@ -1,6 +1,6 @@
-# Título do Projeto | EJCM
+# Galuka
 
-**Status do Projeto** : Terminado / Em desenvolvimento / Suspenso
+**Status do Projeto** : Em desenvolvimento
 
 
 ![Badge](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
