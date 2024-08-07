@@ -1,20 +1,20 @@
-import { BotaoFooter, Container, Icon } from "./style";
+import { ButtonFooter, Container, Icon } from "./style";
 
 export default function Footer(){
     return (
         <Container>
-            <BotaoFooter>
+            <ButtonFooter>
                 <Icon home source={require("../../assets/icons/home.png")}></Icon>
-            </BotaoFooter>
-            <BotaoFooter>
+            </ButtonFooter>
+            <ButtonFooter>
                 <Icon cupom source={require("../../assets/icons/cupom.png")}></Icon>
-            </BotaoFooter>
-            <BotaoFooter>
+            </ButtonFooter>
+            <ButtonFooter>
                 <Icon coracao source={require("../../assets/icons/coracaoVazio.png")}></Icon>
-            </BotaoFooter>
-            <BotaoFooter>
+            </ButtonFooter>
+            <ButtonFooter>
                 <Icon carrinho source={require("../../assets/icons/carrinho.png")}></Icon>
-            </BotaoFooter>
+            </ButtonFooter>
         </Container>
     );
 }

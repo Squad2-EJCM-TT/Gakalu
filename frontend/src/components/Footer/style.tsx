@@ -15,14 +15,14 @@ export const Container = styled.View`
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    position: fixed;
+    position: sticky;
     bottom: 0;
 `;
 
-export const BotaoFooter = styled.Pressable`
+export const ButtonFooter = styled.Pressable`
 `;
 
 export const Icon = styled.Image<iconProps>`
-    width: ${(props: iconProps) => props.home ? 34 : props.cupom ? 50 : props.coracao ? 38 : 40}px;
+    width: ${(props: iconProps) => props.home ? 35 : props.cupom ? 50 : props.coracao ? 38 : 40}px;
     height: ${(props: iconProps) => props.home ? 36 : props.cupom ? 34 : props.coracao ? 34 : 40}px;
 `;
