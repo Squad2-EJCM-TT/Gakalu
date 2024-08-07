@@ -12,7 +12,7 @@ export const Banner = styled.ScrollView.attrs({
     showsHorizontalScrollIndicator: false,
 })`
     margin-left: 18px;
-    margin-top: 15px;
+    margin-top: 100px;
     flex-grow: 0;
     min-height: 198px;
 `;
