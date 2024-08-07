@@ -1,5 +1,5 @@
 import { TextInput, View } from "react-native"
-import { styles } from "./style"
+import { ContainerInput, InputStyles} from "./style"
 
 type PropsInput = {
     placeholder: string
@@ -7,10 +7,10 @@ type PropsInput = {
 
 const Input = (props: PropsInput) => {
     return (
-        <View style = {styles.containerInput}>
-            <TextInput style = {styles.inputStyles} placeholder= {props.placeholder}> 
-            </TextInput>
-        </View>
+        <ContainerInput>
+            <InputStyles placeholder= {props.placeholder}> 
+            </InputStyles>
+        </ContainerInput>
     )
 }
 

@@ -1,35 +1,34 @@
-import { StyleSheet } from "react-native";
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-    container: {
-        marginTop: 76
-    },
-    containerLogo: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#8D8D92',
-        
-        
-    },
-    logoImage: {
-        width: 63,
-        height: 63,
-        marginRight: 74,
-        marginTop: 23,
-        
-    },
-    textContainer: {
-        color: '#8D8D92',
-        position: 'absolute',
-        top: -15,
-        left: '20%',
-        backgroundColor: 'white',
-        fontSize: 20,
-        fontWeight: 400,
-        zIndex: 2,
-    }
-})
+// Styled Components
+export const Container = styled.View`
+  margin-top: 76px;
+`;
+
+export const ContainerLogo = styled.View`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-top-width: 1px;
+  border-top-color: #8d8d92;
+`;
+
+export const LogoImage = styled.Image`
+  width: 63px;
+  height: 63px;
+  margin-right: 74px;
+  margin-top: 23px;
+`;
+
+export const TextContainer = styled.Text`
+  color: #8d8d92;
+  position: absolute;
+  top: -15px;
+  left: 20%;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 400;
+  z-index: 2;
+`;

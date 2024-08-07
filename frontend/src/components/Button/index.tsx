@@ -1,5 +1,5 @@
 import { Pressable, Text, View } from "react-native"
-import { styles } from "./style"
+import { ButtonStyle, TextButton } from "./style"
 
 
 type PropsButton = {
@@ -8,11 +8,11 @@ type PropsButton = {
 
 const Button = (props: PropsButton) => {
     return (
-        <Pressable style = {styles.ButtonStyle}>
-            <Text style = {styles.textButton}>
+        <ButtonStyle>
+            <TextButton>
                 {props.content}
-            </Text>
-        </Pressable>
+            </TextButton>
+        </ButtonStyle>
     )
 }
 

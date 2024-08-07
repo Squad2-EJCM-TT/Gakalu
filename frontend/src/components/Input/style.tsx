@@ -1,25 +1,24 @@
-import { StyleSheet } from "react-native";
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-    containerInput: {
-        width: '90%',
-        height: 50,
-        borderWidth: 2,
-        fontWeight: 400,
-        fontFamily: 'Roboto',
-        borderColor: '#EBEBE9',
-        borderRadius: 34,
-        fontSize: 20,  
-        marginBottom: 21      
-    },
-    inputStyles: {
-        backgroundColor: '#E5E5EA',
-        width: '100%',
-        height: 50,
-        borderRadius: 34,
-        padding: 18,
-        color: '#B1AAAA',
-        fontWeight: 200,
-        fontSize: 20    
-    }
-})
+export const ContainerInput = styled.View`
+  width: 90%;
+  height: 50px;
+  border-width: 2px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  border-color: #EBEBE9;
+  border-radius: 34px;
+  font-size: 20px;
+  margin-bottom: 21px;
+`;
+
+export const InputStyles = styled.TextInput`
+  background-color: #E5E5EA;
+  width: 100%;
+  height: 50px;
+  border-radius: 34px;
+  padding: 18px;
+  color: #B1AAAA;
+  font-weight: 200;
+  font-size: 20px;
+`;
