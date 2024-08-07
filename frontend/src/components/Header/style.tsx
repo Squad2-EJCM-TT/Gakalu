@@ -5,11 +5,15 @@ export const Container = styled.View`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 56px;
-    margin-top: 36px;
+    width: 100%;
+    height: 86px;
+    background-color: #f3f3f3;
+    top: 0;
+    position: fixed;
+    z-index: 1;
 `;
 
-export const PontinhosContainer = styled.View`
+export const PointsContainer = styled.View`
     width: 55px;
     height: 55px;
     display: flex;
@@ -17,7 +21,7 @@ export const PontinhosContainer = styled.View`
     align-items: center;
 `;
 
-export const Pontinhos = styled.Image`
+export const Points = styled.Image`
     width: 31px;
     height: 8px;
 `;

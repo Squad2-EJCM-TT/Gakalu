@@ -1,5 +1,5 @@
 import { Pressable } from "react-native";
-import { Container, Logo, Pontinhos, PontinhosContainer, UserPhoto } from "./style";
+import { Container, Logo, Points, PointsContainer, UserPhoto } from "./style";
 import { Link } from "react-router-dom";
 
 export default function Header(){
@@ -7,9 +7,9 @@ export default function Header(){
         <Container>
             <Pressable
                 onPress={() => <Link to=""></Link>}> {/*MUDAR O LINK*/}
-                <PontinhosContainer>
-                    <Pontinhos source={require("../../assets/header/threeDots.png")}></Pontinhos>
-                </PontinhosContainer>
+                <PointsContainer>
+                    <Points source={require("../../assets/header/threeDots.png")}></Points>
+                </PointsContainer>
             </Pressable>
             <Logo source={require("../../assets/header/logo.png")}></Logo>
             <Pressable
