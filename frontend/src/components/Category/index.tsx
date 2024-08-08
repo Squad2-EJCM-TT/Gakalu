@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container, Icon, Rectangle, Title } from "./style";
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 
 const iconMap: { [key: number]: any } = {
     1: require("../../assets/icons/jogosEletronicos.png"),
@@ -10,15 +12,14 @@ const iconMap: { [key: number]: any } = {
 
 export default function Category({ index, link, title }: {index: number, link?: string, title: string}) {
     const iconSource = iconMap[index];
+    const navigation = useNavigation();
 
     return (
         <Container>
             {link ? (
-                <Link to={link}>
-                    <Rectangle>
-                        <Icon index={index} source={iconSource} />
-                    </Rectangle>
-                </Link>
+                <Rectangle onPress={() => navigation.navigate("Products" as never)}>
+                    <Icon index={index} source={iconSource} />
+                </Rectangle>
             ) : (
                 <Rectangle>
                     <Icon index={index} source={iconSource} />

@@ -9,7 +9,7 @@ export default function Home(){
 
     const categories = [
         { index: 1, title: "Jogos Eletrônicos" },
-        { index: 2, link: "", title: "Peças de Computadores" },
+        { index: 2, link: "Products", title: "Peças de Computadores" },
         { index: 3, title: "Acessórios Novos" },
         { index: 4, title: "Acessórios Semi-Novos" },
     ];
