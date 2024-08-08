@@ -6,9 +6,12 @@ const productMap: { [key: number]: any } = {
     2: require("../../assets/products/cooler.png"),
     3: require("../../assets/products/headsetGamer.png"),
     4: require("../../assets/products/headphone.png"),
+    5: require("../../assets/products/memoria.png"),
+    6: require("../../assets/products/fonte.png"),
+    7: require("../../assets/products/placaVideo.png"),
 };
 
-export default function Produto({ index, title, location, price }: {index: number, title: string, location: string, price: string}){
+export default function Product({ visible, index, title, location, price }: {visible: boolean, index: number, title: string, location: string, price: string}){
     const [favoritado, setFavoritado] = useState(false);
 
     const handleFavoriteToggle = () => {
@@ -18,7 +21,7 @@ export default function Produto({ index, title, location, price }: {index: numbe
     const productSource = productMap[index];
 
     return (
-        <Container>
+        <Container visible={visible}>
             <FavoritoContainer
                 onPress={handleFavoriteToggle}>
                     {favoritado ? (
@@ -39,11 +42,6 @@ export default function Produto({ index, title, location, price }: {index: numbe
                 </LocationContainer>
                 <Price>{price}</Price>
             </ProductInfo>
-            
-
-
-
-
         </Container>
     );
 }

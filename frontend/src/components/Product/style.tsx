@@ -1,11 +1,15 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+interface containerProps{
+    visible?: boolean;
+}
+
+export const Container = styled.View<containerProps>`
     max-width: 185px;
     height: 241px;
     background-color: white;
     border-radius: 15px;
-    display: flex;
+    display: ${(props: containerProps) => (props.visible) ? "flex" : "none"};
     margin-right: 5px;
     justify-content: space-around;
     align-items: center;

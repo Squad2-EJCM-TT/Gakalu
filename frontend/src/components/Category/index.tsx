@@ -8,7 +8,7 @@ const iconMap: { [key: number]: any } = {
     4: require("../../assets/icons/acessoriosSemiNovos.png"),
 };
 
-export default function Categoria({ index, link, title }: {index: number, link?: string, title: string}) {
+export default function Category({ index, link, title }: {index: number, link?: string, title: string}) {
     const iconSource = iconMap[index];
 
     return (
@@ -16,12 +16,12 @@ export default function Categoria({ index, link, title }: {index: number, link?:
             {link ? (
                 <Link to={link}>
                     <Rectangle>
-                        <Icon source={iconSource} />
+                        <Icon index={index} source={iconSource} />
                     </Rectangle>
                 </Link>
             ) : (
                 <Rectangle>
-                    <Icon source={iconSource} />
+                    <Icon index={index} source={iconSource} />
                 </Rectangle>
             )}
             <Title>{title}</Title>
