@@ -1,9 +1,12 @@
 import { ButtonFooter, Container, Icon } from "./style";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Footer(){
+    const navigation = useNavigation();
+
     return (
         <Container>
-            <ButtonFooter>
+            <ButtonFooter onPress={() => navigation.navigate("Home" as never)}>
                 <Icon home source={require("../../assets/icons/home.png")}></Icon>
             </ButtonFooter>
             <ButtonFooter>
