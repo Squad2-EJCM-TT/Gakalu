@@ -21,4 +21,5 @@ export const InputStyles = styled.TextInput`
   color: #B1AAAA;
   font-weight: 200;
   font-size: 20px;
+  outline-width: 0;
 `;

@@ -9,6 +9,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: flex-start;
   padding-top: 100px;
+  background-color: #F3F3F3;
 `;
 
 export const LogoGakalu = styled.Image`

@@ -3,12 +3,13 @@ import { ButtonStyle, TextButton } from "./style"
 
 
 type PropsButton = {
-    content: string
+    content: string;
+    onClick: any;
 }
 
 const Button = (props: PropsButton) => {
     return (
-        <ButtonStyle>
+        <ButtonStyle onPress={props.onClick}>
             <TextButton>
                 {props.content}
             </TextButton>

@@ -3,15 +3,17 @@ import {Container, TextContainer, ContainerLogo, LogoImage} from './style'
 
 //imagens
 
+type PropsLogoContainer = {
+    content: string;
+}
 
-
-const LogoContainer = () => {
+const LogoContainer = (props: PropsLogoContainer) => {
     return (
             <Container>
-                <TextContainer>Ou Conecte Com</TextContainer>
+                <TextContainer>{props.content}</TextContainer>
                 <ContainerLogo>
-                    <LogoImage source={require('../../assets/gmaillogo.svg')}></LogoImage>
                     <LogoImage source={require('../../assets/facebooklogo.svg')}></LogoImage>
+                    <LogoImage source={require('../../assets/gmaillogo.svg')}></LogoImage>
                 </ContainerLogo>
             </Container>
         
