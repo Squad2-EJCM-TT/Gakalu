@@ -55,4 +55,5 @@ export const TextConta = styled.Text`
 export const TextContaAzul = styled.Text`
   color: #0332FC;
   font-weight: 600;
+  margin-left: 5px;
 `;

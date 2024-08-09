@@ -4,6 +4,7 @@ import Input from "../../components/Input"
 import Button from "../../components/Button"
 import LogoContainer from "../../components/LogoContainer"
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
+import { useNavigation } from "@react-navigation/native"
 
 interface LoginData {
     nome: string;
@@ -12,6 +13,7 @@ interface LoginData {
 
 const Login = () => {
 
+    const navigation = useNavigation();
     const {control,handleSubmit, formState: {errors}} = useForm()
     const onSubmit: SubmitHandler<LoginData> = (data) => {
         if(!data.nome || !data.senha) {
@@ -46,9 +48,12 @@ const Login = () => {
                 <TextSenha>Esqueci a senha</TextSenha>
             </ContainerForm>
             <Button content="Entrar" onClick={handleSubmit(onSubmit)}/>
-            <LogoContainer content="Ou Conecte Com"/>
+            <LogoContainer content="Ou Conecte Com" page="Login"/>
             <TextConta>
-                Não tem conta? <TextContaAzul>Crie uma conta</TextContaAzul>
+                Não tem conta? 
+                <Pressable onPress={() => navigation.navigate("QuemVc" as never)}>
+                    <TextContaAzul>Crie uma conta</TextContaAzul>
+                </Pressable>
             </TextConta>
         </Container>
     
