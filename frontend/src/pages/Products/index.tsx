@@ -22,21 +22,41 @@ export default function Products() {
         switch(option){
             case "Todos":
                 setIsTodos(!isTodos);
+                setIsRAM(false);
+                setIsCooler(false);
+                setIsFonte(false);
+                setIsPlacaVideo(false);
             break;
 
             case "RAM":
+                setIsTodos(false);
                 setIsRAM(!isRAM);
+                setIsCooler(false);
+                setIsFonte(false);
+                setIsPlacaVideo(false);
             break;
 
             case "Cooler":
+                setIsTodos(false);
+                setIsRAM(false);
                 setIsCooler(!isCooler);
+                setIsFonte(false);
+                setIsPlacaVideo(false);
             break;
 
             case "Fonte":
+                setIsTodos(false);
+                setIsRAM(false);
+                setIsCooler(false);
                 setIsFonte(!isFonte);
+                setIsPlacaVideo(false);
             break;
 
             case "PlacaVideo":
+                setIsTodos(false);
+                setIsRAM(false);
+                setIsCooler(false);
+                setIsFonte(false);
                 setIsPlacaVideo(!isPlacaVideo);
             break;
 
@@ -72,24 +92,24 @@ export default function Products() {
                 <ProductsTitle>Peças de Computadores</ProductsTitle>
                 <ProductsNavigationContainer>
                     <OptionPressable onPress={() => handleToggle("Todos")}>
-                        <OptionText isSelected={isTodos}>Todos</OptionText>
-                        <OptionUnderline isSelected={isTodos} />
+                        <OptionText isSelected={isTodos && !isRAM && !isCooler && !isFonte && !isPlacaVideo}>Todos</OptionText>
+                        <OptionUnderline isSelected={isTodos && !isRAM && !isCooler && !isFonte && !isPlacaVideo} />
                     </OptionPressable>
                     <OptionPressable onPress={() => handleToggle("RAM")}>
-                        <OptionText isSelected={isRAM}>Memoria RAM</OptionText>
-                        <OptionUnderline isSelected={isRAM} />
+                        <OptionText isSelected={!isTodos && isRAM && !isCooler && !isFonte && !isPlacaVideo}>Memoria RAM</OptionText>
+                        <OptionUnderline isSelected={!isTodos && isRAM && !isCooler && !isFonte && !isPlacaVideo} />
                     </OptionPressable>
                     <OptionPressable onPress={() => handleToggle("Cooler")}>
-                        <OptionText isSelected={isCooler}>Cooler</OptionText>
-                        <OptionUnderline isSelected={isCooler} />
+                        <OptionText isSelected={!isTodos && !isRAM && isCooler && !isFonte && !isPlacaVideo}>Cooler</OptionText>
+                        <OptionUnderline isSelected={!isTodos && !isRAM && isCooler && !isFonte && !isPlacaVideo} />
                     </OptionPressable>
                     <OptionPressable onPress={() => handleToggle("Fonte")}>
-                        <OptionText isSelected={isFonte}>Fonte</OptionText>
-                        <OptionUnderline isSelected={isFonte} />
+                        <OptionText isSelected={!isTodos && !isRAM && !isCooler && isFonte && !isPlacaVideo}>Fonte</OptionText>
+                        <OptionUnderline isSelected={!isTodos && !isRAM && !isCooler && isFonte && !isPlacaVideo} />
                     </OptionPressable>
                     <OptionPressable onPress={() => handleToggle("PlacaVideo")}>
-                        <OptionText isSelected={isPlacaVideo}>Placa de Video</OptionText>
-                        <OptionUnderline isSelected={isPlacaVideo} />
+                        <OptionText isSelected={!isTodos && !isRAM && !isCooler && !isFonte && isPlacaVideo}>Placa de Video</OptionText>
+                        <OptionUnderline isSelected={!isTodos && !isRAM && !isCooler && !isFonte && isPlacaVideo} />
                     </OptionPressable>
                 </ProductsNavigationContainer>
                 <ProductsDisplayContainer>
