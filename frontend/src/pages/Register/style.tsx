@@ -15,11 +15,7 @@ export const Container = styled.View `
 export const IconeVoltar = styled.Image `
     width: 31px;
     height: 30px;
-    align-self: start;
     justify-self: start;
-    margin-bottom: 10px;
-    margin-left: 20px
-    
 `
 
 export const LogoGakalu = styled.Image `

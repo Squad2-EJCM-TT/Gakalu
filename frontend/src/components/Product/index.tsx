@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, FavoritoContainer, FavoritoIcon, LocationContainer, LocationIcon, LocationText, Price, ProductContainer, ProductInfo, ProductPhoto, ProductTitle, Stars } from "./style";
+import { useNavigation } from "@react-navigation/native";
 
 const productMap: { [key: number]: any } = {
     1: require("../../assets/products/zelda.png"),
@@ -13,6 +14,7 @@ const productMap: { [key: number]: any } = {
 
 export default function Product({ visible, index, title, location, price }: {visible: boolean, index: number, title: string, location: string, price: string}){
     const [favoritado, setFavoritado] = useState(false);
+    const navigation = useNavigation();
 
     const handleFavoriteToggle = () => {
         setFavoritado(!favoritado);
@@ -31,7 +33,7 @@ export default function Product({ visible, index, title, location, price }: {vis
                     )}
             </FavoritoContainer>
                 <Stars source={require("../../assets/products/cincoEstrelas.png")}></Stars>
-                <ProductContainer>
+                <ProductContainer onPress={() => navigation.navigate("DetalhesJogos" as never)}>
                     <ProductPhoto source={productSource}></ProductPhoto>
                 </ProductContainer>
             <ProductInfo>

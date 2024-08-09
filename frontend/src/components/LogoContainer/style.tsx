@@ -1,9 +1,12 @@
 import styled from 'styled-components/native';
 
+interface pageProps{
+  page?: string;
+}
 // Styled Components
 export const Container = styled.View`
   margin-top: 76px;
-  width: 90%
+  width: 90%;
 `;
 
 export const ContainerLogo = styled.View`
@@ -25,7 +28,7 @@ export const LogoImage = styled.Image`
   left: 30px;
 `;
 
-export const TextContainer = styled.Text`
+export const TextContainer = styled.Text<pageProps>`
   color: #8d8d92;
   position: absolute;
   top: -15px;
@@ -34,4 +37,6 @@ export const TextContainer = styled.Text`
   font-size: 20px;
   font-weight: 400;
   z-index: 2;
+  padding: ${(props: pageProps) => (props.page === "Login" ? '0 10px' : props.page === "Register" ? '0 10px' : "0")};
+  margin-left: ${(props: pageProps) => (props.page === "Login" ? '-10px' : props.page === "Register" ? '10px' : "0")};
 `;

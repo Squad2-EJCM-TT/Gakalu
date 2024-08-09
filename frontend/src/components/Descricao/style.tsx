@@ -84,7 +84,7 @@ export const TextoDescricao = styled.Text `
     font-weight: 400;
     font-size: 16px;
     color: #1C1C1E;
-
+    margin-top: 10px;
 
 `
 

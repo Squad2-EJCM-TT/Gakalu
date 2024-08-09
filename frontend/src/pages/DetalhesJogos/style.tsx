@@ -33,7 +33,7 @@ export const CarrinhoImg = styled.Image `
 `;
 
 export const TituloCabecalho = styled.Text `
-    color: ${global.colors.AzulEscuro};
+    
     font-size: 24px;
     font-weight: 700;
 `;
@@ -47,7 +47,7 @@ export const BotaoCarrinho = styled.Pressable `
 `;
 
 export const NumeroItensTexto = styled.Text `
-    color: ${global.colors.Branco};
+    
     font-size: 12px;
     font-weight: 500;
     font-family: '';
@@ -63,14 +63,14 @@ export const NumeroItensContainer = styled.View `
     top:0;
     right:0;
     z-index:2;
-    background-color: ${global.colors.Azul} ;
+    
 
     
 `;
 
 export const ImagemContainer = styled.View `
     position: relative;
-    background-color: ${global.colors.Branco} ;
+    
     border-radius: 15px;
     width: 388px;
     height: 266px;
@@ -104,7 +104,7 @@ export const NomePrecoContainer = styled.View `
 `
 
 export const NomeProduto = styled.Text `
-    color: ${global.colors.AzulEscuro};
+    
     font-weight: 700;
     font-size: 32px;
     font-family: '';

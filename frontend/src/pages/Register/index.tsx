@@ -1,4 +1,4 @@
-import { Image, View } from "react-native"
+import { Image, Pressable, View } from "react-native"
 import { Container, ContainerForm, LogoGakalu, TituloForm,  IconeVoltar, ViewButton, LabelCheckbox, ViewCheckbox} from "./style"
 import LogoContainer from "../../components/LogoContainer"
 import Button from "../../components/Button"
@@ -7,6 +7,7 @@ import { useState } from "react"
 import { Controller, useForm, SubmitHandler } from "react-hook-form"
 import CheckBox from '@react-native-community/checkbox'
 import Checkbox from "expo-checkbox"
+import { useNavigation } from "@react-navigation/native"
 
 
 interface FormData {
@@ -19,19 +20,22 @@ interface FormData {
 
 const Register = () => {
     
+    const navigation = useNavigation();
     const { control, handleSubmit, formState: { errors } } = useForm()
     const onSubmit: SubmitHandler<FormData> = (data) => {
         if(!data.nome || !data.email || !data.checkbox) {
             console.log("sem nome")
             return
         }
-        console.log(data)
+        navigation.navigate("Home" as never);
     }
     const [valueCheckbox, setValueCheckbox] = useState(false)
 
     return (
         <Container>
-            <IconeVoltar source = {require('../../assets/iconeVoltar.svg')}/>
+            <Pressable onPress={() => navigation.goBack()} style={{alignSelf: "flex-start", marginBottom: 10, marginLeft: 20 }}>
+                <IconeVoltar source = {require('../../assets/iconeVoltar.svg')}/>
+            </Pressable>
             <View>
                 <LogoGakalu source={require('../../assets/logo.png')}/>
             </View>
@@ -75,7 +79,7 @@ const Register = () => {
                 )}/> 
             </ContainerForm>
             <ViewButton><Button content="Cadastrar" onClick={handleSubmit(onSubmit)}/></ViewButton>
-           <LogoContainer content="Cadastrar Com"/>
+           <LogoContainer content="Cadastrar Com"  page="Register"/>
         </Container>
     )
 }

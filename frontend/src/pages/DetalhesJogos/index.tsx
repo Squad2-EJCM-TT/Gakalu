@@ -2,14 +2,15 @@ import { useState } from "react";
 import BotaoAzul from "../../components/botaoAzul";
 import Descricao from "../../components/Descricao";
 import { BotaoCarrinho, CabecalhoContainer, Detalhes,SetaImg, NumeroItensContainer, NumeroItensTexto, SetaVoltar, TituloCabecalho, CarrinhoImg, ImagemContainer, ImagemProduto, BotaoCurtir, BotaoCurtirImagem, NomePrecoContainer, CategoriaProduto, NomeProduto, Preco, PrecoAvalContainer, Estrela, EstrelaContainer, PerfilLojaContainer, PerfilAvalContainer, FotoPerfil, NomePerfil, BotaoVerLoja, VerLojaTexto, EstrelaPerfil, EstrelaPerfilContainer } from "./style";
-import { View, Text, Image, Pressable } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 export default function DetalhesJogos () {
 const [Curtida, setCurtida] = useState (true) 
+const navigation = useNavigation();
     return (
         <Detalhes> 
            <CabecalhoContainer>
-            <SetaVoltar>
+            <SetaVoltar onPress={() => navigation.goBack()}>
               <SetaImg source={require("../../assets/SetaEsquerda.svg")}/>
             </SetaVoltar>
             <TituloCabecalho>Titulo</TituloCabecalho>
