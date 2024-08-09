@@ -5,12 +5,13 @@ import {Container, TextContainer, ContainerLogo, LogoImage} from './style'
 
 type PropsLogoContainer = {
     content: string;
+    page: string;
 }
 
 const LogoContainer = (props: PropsLogoContainer) => {
     return (
             <Container>
-                <TextContainer>{props.content}</TextContainer>
+                <TextContainer page={props.page}>{props.content}</TextContainer>
                 <ContainerLogo>
                     <LogoImage source={require('../../assets/facebooklogo.svg')}></LogoImage>
                     <LogoImage source={require('../../assets/gmaillogo.svg')}></LogoImage>
