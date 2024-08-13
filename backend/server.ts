@@ -2,6 +2,7 @@ import express from 'express';
 import configDotenv from './src/config/dotenv';
 // import cors from 'cors';
 // import routes from './src/routes/routes';
+import routes from './src/routes/routes';
 
 configDotenv();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(cors());
 //app.use(routes);
+app.use(routes);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

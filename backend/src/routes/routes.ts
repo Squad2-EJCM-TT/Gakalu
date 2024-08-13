@@ -5,7 +5,7 @@ const router = Router();
 
 // carrinho
 router.post("/carrinho", carrinhoController.create );
-router.get("/carrinho", carrinhoController.read);
+router.get("/carrinho", carrinhoController.readAll);
 
 
 export default router;

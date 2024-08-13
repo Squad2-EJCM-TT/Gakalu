@@ -65,7 +65,7 @@ model Produto{
 }
 
 model Carrinho{
-  idUsuario Int           @id @default(autoincrement())
+  idUsuario Int           @id
   usuario Usuario @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
   produto ProdutoCarrinho[]
   cupom Cupom[]
@@ -78,8 +78,9 @@ model Favoritos{
 }
 
 model ProdutoCarrinho{
-  idUsuario Int   @default(autoincrement())
+  idUsuario Int  
   carrinho Carrinho @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
+  quantProd Int @default(1)
 
   idProduto Int
   produto Produto @relation(fields: [idProduto], references: [idProduto], onDelete: Cascade)
