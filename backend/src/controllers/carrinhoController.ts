@@ -8,23 +8,26 @@ class CarrinhoController {
     public async create(request:Request, response: Response){
         try{
             const {id} = request.body;
-            const usuario = await prisma.carrinho.findUnique({
+            const usuariocarrinho = await prisma.carrinho.findUnique({
                 where: {idUsuario: Number(id)}
             })
-            if (!usuario){
-                return response.status(404).json({message: "Usuario não cadastrado"});
+            if (!usuariocarrinho){
+                return response.status(404).json({message: "Usuario não cadastrado. Cadastre-se para aproveitar as ofertas!"});
 
             }
+            let carrinhoDOUsuario: Prisma.CarrinhoCreateInput = {
+                usuario: {
+                    connect: { idUsuario: Number(id) }
+                },
+                quantProdutos: 0,
+                valorTotal: 0
+            }
             const novoCarrinho = await prisma.carrinho.create({
-                data: { idUsuario: id,
-                    usuario: {
-                        connect: {idUsuario: Number(id)}
-                    }
-                }
+                data: carrinhoDOUsuario 
             });
         
             return response.status(201).json({
-            message: "carrinho criado com sucesso"
+            message: "carrinho criado com sucesso",novoCarrinho
             });
     }   
         catch(error){
@@ -34,59 +37,107 @@ class CarrinhoController {
 
     }
 
-//read/get todos os produtos do carrinho
-
-    public async readAll(request: Request, response: Response){
-        try{
-            
-            const conteudoCarrinho = await prisma.carrinho.findMany();
-            return response.status(200).json(conteudoCarrinho)
-            
-        }
-        catch(error){
-            return response.status(500).json({
-                messageError: "carrinho não encontrato",
-                error: error,
-            });
-        }
-
-    }
     public async addProdutoCarrinho(request: Request, response: Response){
         try{
             
-            const {idUsuario, idProduto} = request.body;
+            const {idUsuario, idProduto, quantidadeMesmoProduto} = request.body;
             const produtoCarrinho = await prisma.produtoCarrinho.findUnique({
                 where: {idUsuario_idProduto: {idUsuario:idUsuario , idProduto: idProduto}}
             })
             if (!produtoCarrinho){
-                let produtoCarrinhoInput: Prisma.ProdutoCarrinhoCreateInput={
+                let produtocarrinhoInput: Prisma.ProdutoCarrinhoCreateInput={
                     carrinho: {
-                        connect: {idUsuario: Number(idUsuario)}
+                        connect: { idUsuario: Number(idUsuario) }
                     },
                     produto: {
-                        connect: {idProduto: Number(idProduto)}
-                    } 
+                        connect: { idProduto: Number(idProduto) }
+                    },
+                    quantidadeMesmoProduto: 0
                 }
+            }
 
-
-                const addProduto = await prisma.produtoCarrinho.create({
-                    data: {
-                        produtoCarrinhoInput
-                    }})
-                    
+            else{
+                const addProdutoCarrinho = await prisma.produtoCarrinho.upsert({
+                    where: { idUsuario_idProduto: { idUsuario: idUsuario, idProduto: idProduto } },
+                    update: {quantidadeMesmoProduto: {increment: quantidadeMesmoProduto}},
+                    create: produtocarrinhoInput
+                });
+                const valorProd = await prisma.produto.findUnique({
+                    where: {idProduto: parseInt(idProduto)}
+                });
+                async function atualizarValorTotalCarrinho(idUsuario: number ,quantidadeMesmoProduto:number){
+                    return prisma.carrinho.update({
+                        where: {idUsuario: idUsuario},
+                        data: {valorTotal: {increment: quantidadeMesmoProduto * Number(valorProd) }}
+                    });
                 }
+                atualizarValorTotalCarrinho(idUsuario, quantidadeMesmoProduto);
+
+                return response.status(201).json(addProdutoCarrinho);
+                
+                }   
                 
             
             
             
         }
-        catch {
-            
+        catch(error){
+            return response.status(500).json({
+                mensagemErro: "erro ao adicionar produto ao carrinho!", error: error})
         }
     }
+//read/get todos os produtos do carrinho
 
+    public async readAll(request: Request, response: Response){
+        try{
+            const {idUsuario}=request.params;
+
+            const conteudoCarrinho = await prisma.carrinho.findUnique({
+                where: {idUsuario: parseInt(idUsuario) },
+                include: {produto:true},
+            });
+            return response.status(200).json(conteudoCarrinho);
+        }
+            
+        
+        catch(error){
+            console.error(error);
+            return response.status(500).json({
+                error: "carrinho não encontrato"
+            });
+        }
+
+    }
+    
+
+    async removerProdCarrinho(request: Request, response:Response) {
+        try {
+            const { idUsuario, idProduto, quantProdRepetidos} =request.body;
+            const produtoRemover = await prisma.produto.findUnique({
+                where: {idProduto: parseInt(idProduto)},
+            });
+            await prisma.produtoCarrinho.update({
+                where: { idUsuario_idProduto: {idUsuario: Number(idUsuario),idProduto: Number(idProduto)}}, 
+                data: { quantidadeMesmoProduto: {decrement: Number(quantidadeMesmoProduto)}},
+            });
+            async function atualizarValorTotalCarrinho(idUsuario: number) {
+                return prisma.carrinho.update({
+                    where: { idUsuario: idUsuario},
+                    data: {valorTotal: {decrement: Number(produtoRemover?.Valor) * Number(quantidadeMesmoProduto)}},
+
+                });
+            }
+
+
+        }
+
+        catch {
+
+        }
+
+
+    }
 }
-//update/put carrinho com produtos
 
 //delete produto carrinho
 

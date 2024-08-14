@@ -1,11 +1,12 @@
 import { Router } from "express";
-import { carrinhoController, userController } from "../controllers/carrinhoController";
+import { carrinhoController } from "../controllers/carrinhoController";
 
 const router = Router();
 
 // carrinho
 router.post("/carrinho", carrinhoController.create );
-router.get("/carrinho", carrinhoController.readAll);
+router.get("/carrinho/:idUsuario", carrinhoController.readAll);
+addProdutoCarrinho
 
 
 export default router;

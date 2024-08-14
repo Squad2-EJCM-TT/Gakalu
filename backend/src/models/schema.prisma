@@ -66,9 +66,12 @@ model Produto{
 
 model Carrinho{
   idUsuario Int           @id
+  quantProdutos Int 
+  valorTotal Decimal
   usuario Usuario @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
   produto ProdutoCarrinho[]
   cupom Cupom[]
+  
 }
 
 model Favoritos{
@@ -80,7 +83,7 @@ model Favoritos{
 model ProdutoCarrinho{
   idUsuario Int  
   carrinho Carrinho @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
-  quantProd Int @default(1)
+  quantidadeMesmoProduto Int 
 
   idProduto Int
   produto Produto @relation(fields: [idProduto], references: [idProduto], onDelete: Cascade)
