@@ -16,13 +16,13 @@ datasource db {
 model Usuario{
     idUsuario  Int       @id @default(autoincrement())
     role       Role      
-    nome       String[]   
-    hesh       String[]
-    email      String[]  @unique  
-    salt       String[]
-    bairro      String[]
+    nome       String  
+    hesh       String
+    email      String  @unique  
+    salt       String
+    bairro      String
     CEP         Int
-    cidade      String[]
+    cidade      String
     favoritos  Favoritos?
     carrinho   Carrinho?
     produto    Produto[]
