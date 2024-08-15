@@ -9,6 +9,7 @@ import Confirmacao from "./src/pages/Confirmacao";
 import DetalhesJogos from "./src/pages/DetalhesJogos";
 import Route from './src/routes';
 import Carrinho from './src/pages/Carrinho';
+import Splash from './src/pages/Splash.tsx';
 
 export default function App() {
   return (

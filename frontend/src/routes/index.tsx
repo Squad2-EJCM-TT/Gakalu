@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 function Route() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Carrinho" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
         <Stack.Screen name="QuemVc" component={QuemVc} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
