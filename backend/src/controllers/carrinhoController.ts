@@ -19,7 +19,6 @@ class CarrinhoController {
                 usuario: {
                     connect: { idUsuario: Number(id) }
                 },
-                quantProdutos: 0,
                 valorTotal: 0
             }
             const novoCarrinho = await prisma.carrinho.create({
@@ -37,30 +36,35 @@ class CarrinhoController {
 
     }
 
-    public async addProdutoCarrinho(request: Request, response: Response){
+    public async adicionarProdutoCarrinho(request: Request, response: Response){
         try{
             
             const {idUsuario, idProduto, quantidadeMesmoProduto} = request.body;
             const produtoCarrinho = await prisma.produtoCarrinho.findUnique({
                 where: {idUsuario_idProduto: {idUsuario:idUsuario , idProduto: idProduto}}
-            })
-            if (!produtoCarrinho){
-                let produtocarrinhoInput: Prisma.ProdutoCarrinhoCreateInput={
-                    carrinho: {
-                        connect: { idUsuario: Number(idUsuario) }
-                    },
-                    produto: {
-                        connect: { idProduto: Number(idProduto) }
-                    },
-                    quantidadeMesmoProduto: 0
-                }
-            }
 
+            })
+            let produtocarrinhoInput: Prisma.ProdutoCarrinhoCreateInput={
+                carrinho: {
+                    connect: { idUsuario: Number(idUsuario) }
+                },
+                produto: {
+                    connect: { idProduto: Number(idProduto) }
+                },
+                quantidadeMesmoProduto: 1
+            }
+            if (!produtoCarrinho){ 
+                await prisma.produtoCarrinho.create({
+                    data: produtocarrinhoInput
+                })
+                
+            }
+            
             else{
-                const addProdutoCarrinho = await prisma.produtoCarrinho.upsert({
+                const addProdutoCarrinho = await prisma.produtoCarrinho.update({
                     where: { idUsuario_idProduto: { idUsuario: idUsuario, idProduto: idProduto } },
-                    update: {quantidadeMesmoProduto: {increment: quantidadeMesmoProduto}},
-                    create: produtocarrinhoInput
+                    data: {quantidadeMesmoProduto: produtoCarrinho.quantidadeMesmoProduto+1}                //como adicionar produto ao carrinho
+                    
                 });
                 const valorProd = await prisma.produto.findUnique({
                     where: {idProduto: parseInt(idProduto)}
@@ -74,7 +78,6 @@ class CarrinhoController {
                 atualizarValorTotalCarrinho(idUsuario, quantidadeMesmoProduto);
 
                 return response.status(201).json(addProdutoCarrinho);
-                
                 }   
                 
             
@@ -88,7 +91,7 @@ class CarrinhoController {
     }
 //read/get todos os produtos do carrinho
 
-    public async readAll(request: Request, response: Response){
+    public async exibirCarrinho(request: Request, response: Response){
         try{
             const {idUsuario}=request.params;
 
@@ -112,7 +115,7 @@ class CarrinhoController {
 
     async removerProdCarrinho(request: Request, response:Response) {
         try {
-            const { idUsuario, idProduto, quantProdRepetidos} =request.body;
+            const { idUsuario, idProduto, quantidadeMesmoProduto} =request.body;
             const produtoRemover = await prisma.produto.findUnique({
                 where: {idProduto: parseInt(idProduto)},
             });
@@ -128,14 +131,25 @@ class CarrinhoController {
                 });
             }
 
+            atualizarValorTotalCarrinho(idUsuario);
+
+            const carrinhoProdutoAcessar = await prisma.produtoCarrinho.findUnique({
+                where: { idUsuario_idProduto: {idUsuario: Number(idUsuario),idProduto: Number(idProduto)}},
+            });
+            if (carrinhoProdutoAcessar?.quantidadeMesmoProduto ===0) {
+                await prisma.produtoCarrinho.delete({
+                    where: { idUsuario_idProduto: {idUsuario: Number(idUsuario),idProduto: Number(idProduto)}},
+                });
+            }
+            return response.status(200).json({ message: "Unidade do produto removida com sucesso!"})
 
         }
 
-        catch {
+        catch (error: any) {
+            console.error(error);
+            return response.status(500).json({ error: "erro ao remover o produto do seu carrinho"})
 
         }
-
-
     }
 }
 
@@ -143,5 +157,4 @@ class CarrinhoController {
 
 export const carrinhoController = new CarrinhoController();
 
-export { prisma };
 
