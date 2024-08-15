@@ -9,11 +9,12 @@ import Confirmacao from "./src/pages/Confirmacao";
 import DetalhesJogos from "./src/pages/DetalhesJogos";
 import Endereco from "./src/pages/Endereco";
 import NovosProdutos from './src/pages/NovosProdutos';
+import CadastroProduto from './src/pages/CadastroProduto';
 
 import Route from './src/routes';
 
 export default function App() {
   return (
-    <NovosProdutos/>
+    <CadastroProduto/>
   );
 }
