@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import DetalhesJogos from '../pages/DetalhesJogos';
 import Confirmacao from '../pages/Confirmacao';
+import Coupons from '../pages/Coupons';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ function Route() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Products" component={Products} />
         <Stack.Screen name="DetalhesJogos" component={DetalhesJogos} />
+        <Stack.Screen name="Coupons" component={Coupons} />
       </Stack.Navigator>
     </NavigationContainer>
   );
