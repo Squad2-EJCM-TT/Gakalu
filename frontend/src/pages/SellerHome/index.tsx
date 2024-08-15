@@ -14,8 +14,8 @@ export default function SellerHome(){
 
     return(
         <>
+        <Header vendedor={true}/>
         <Container>
-            <Header/>
             <SellerSearchContainer>
                 <Lupa source={require("../../assets/icons/lupa.png")}></Lupa>
                 <Search placeholder="Buscar..."></Search>
@@ -38,7 +38,7 @@ export default function SellerHome(){
                 ))}
             </SellerProductsDisplayContainer>
         </Container>
-        <Footer/>
+        <Footer userType={{ vendedor: true }}/>
         </>
     )
 }
