@@ -7,7 +7,6 @@ export const Detalhes = styled.View `
     align-items: center;
     background-color: #f3f3f3;
     padding: 0 20px;
-
 `;
 
 export const CabecalhoContainer = styled.View `
@@ -63,9 +62,6 @@ export const NumeroItensContainer = styled.View `
     top:0;
     right:0;
     z-index:2;
-    
-
-    
 `;
 
 export const ImagemContainer = styled.View `

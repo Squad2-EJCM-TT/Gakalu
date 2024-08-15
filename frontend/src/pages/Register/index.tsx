@@ -46,7 +46,7 @@ const Register = () => {
                     name="nome"
                     rules={{ required: true }}
                     render={({ field: { onChange, onBlur, value } }) => (
-                        <Input placeholder="Nome" onChange={onChange} onBlur={onBlur} value={value}/>
+                        <Input placeholder="Nome" onChange={onChange} onBlur={onBlur} value={value} valor = {false}/>
                      )}
                 />{errors.newsletter && <h1>This field is required.</h1>}
                 <Controller
@@ -54,7 +54,7 @@ const Register = () => {
                     name="email"
                     rules={{required: true}}
                     render={({field: {onChange, onBlur, value}}) => (
-                        <Input placeholder="Email" onChange={onChange} onBlur={onBlur} value={value}/>
+                        <Input placeholder="Email" onChange={onChange} onBlur={onBlur} value={value} valor = {false}/>
                     )}
                 />  
                 <Controller
@@ -62,7 +62,7 @@ const Register = () => {
                     name="senha"
                     rules={{required: true}}
                     render={({field: {onChange, onBlur, value}}) => (
-                        <Input placeholder="Senha" onChange={onChange} onBlur={onBlur} value={value}/>
+                        <Input placeholder="Senha" onChange={onChange} onBlur={onBlur} value={value} valor = {false}/>
                 )}/>
 
                 <Controller

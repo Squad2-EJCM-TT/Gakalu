@@ -7,10 +7,13 @@ import QuemVc from "./src/pages/QuemVc";
 import Register from './src/pages/Register';
 import Confirmacao from "./src/pages/Confirmacao";
 import DetalhesJogos from "./src/pages/DetalhesJogos";
+import Endereco from "./src/pages/Endereco";
+import NovosProdutos from './src/pages/NovosProdutos';
+
 import Route from './src/routes';
 
 export default function App() {
   return (
-    <Route/>
+    <NovosProdutos/>
   );
 }
