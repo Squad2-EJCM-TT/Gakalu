@@ -6,13 +6,13 @@ const { width } = Dimensions.get('window');
 const isSmallScreen = width < 425;
 
 interface containerProps{
-    visible?: boolean;
+    isVisible?: boolean;
 }
 
 export const Container = styled.View<containerProps>`
     width: ${isSmallScreen ? '324px' : '394px'};
     height: 116px;
-    display: ${(props: containerProps) => (props.visible) ? "flex" : "none"};
+    display: ${(props: containerProps) => (props.isVisible) ? "flex" : "none"};
     flex-direction: row;
     background-color: #FFFFFF;
     border-radius: 15px;
@@ -20,10 +20,11 @@ export const Container = styled.View<containerProps>`
     margin-left: 7%;
 `;
 
-export const ImageContainer = styled.View`
+export const ImageContainer = styled.Pressable`
     width: ${isSmallScreen ? '97px' : '127px'};;
     height: 100%;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     background-color: #0332FC;
     display: flex;
     justify-content: center;
