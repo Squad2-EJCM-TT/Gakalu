@@ -1,4 +1,4 @@
-import { View } from "react-native"
+import { Pressable, View } from "react-native"
 import {Container, ContainerForm, ContainerButton} from './style'
 import Header2 from "../../components/Header2";
 import Input from "../../components/Input"
@@ -15,13 +15,15 @@ interface EnderecoData {
 
 const Endereco = () => {
 
+    const navigation = useNavigation()
     const { control, handleSubmit, formState: { errors } } = useForm()
     const onSubmit: SubmitHandler<EnderecoData> = (data) => {
-        if (!data.cpf || !data.bairro || !data.cidade || data.cep) {
+        if (!data.cpf || !data.bairro || !data.cidade || !data.cep) {
             console.log("sem nome")
             return
         }
         console.log(data)
+        navigation.navigate("Confirmacao" as never)
     }
 
     return (
@@ -30,10 +32,10 @@ const Endereco = () => {
             <ContainerForm>
                 <Controller
                     control={control}
-                    name="cep"
+                    name="cpf"
                     rules={{ required: true }}
                     render={({ field: { onChange, onBlur, value } }) => (
-                        <Input placeholder="CEP" onChange={onChange} onBlur={onBlur} value={value} valor = {false}/>
+                        <Input placeholder="CPF" onChange={onChange} onBlur={onBlur} value={value} valor = {false}/>
                     )}
                 />{errors.newsletter && <h1>This field is required.</h1>}
                 <Controller
@@ -61,7 +63,11 @@ const Endereco = () => {
                     )}
                 />{errors.newsletter && <h1>This field is required.</h1>}
             </ContainerForm>
-            <ContainerButton><Button content="Finalizar pedido" onClick={handleSubmit(onSubmit)} /></ContainerButton>
+            <Pressable>
+                <ContainerButton><Button content="Finalizar pedido" onClick={handleSubmit(onSubmit)} /></ContainerButton>
+            </Pressable>
+                
+            
         </Container>
     )
 }

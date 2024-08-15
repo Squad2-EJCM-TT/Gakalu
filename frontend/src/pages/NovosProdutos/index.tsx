@@ -19,6 +19,7 @@ interface ProdutosData {
 
 const NovosProdutos = () => {
 
+    const navigation = useNavigation()
     const { control, handleSubmit, formState: { errors } } = useForm()
     const onSubmit: SubmitHandler<ProdutosData> = (data) => {
         if (!data.nome || !data.valor || !data.cidade || data.categoria) {
@@ -26,6 +27,7 @@ const NovosProdutos = () => {
             return
         }
         console.log(data)
+        navigation.navigate("CadastroProduto" as never)
     }
 
     return (
