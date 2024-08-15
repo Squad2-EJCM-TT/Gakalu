@@ -6,11 +6,25 @@ const { width } = Dimensions.get('window');
 
 const isSmallScreen = width < 390;
 
+interface ScreenProps{
+    cardActive: boolean;
+}
+
 export const Container = styled.View`
     width: 100%;
     height: 100vh;
     background-color: #F3F3F3;
     overflow-x: hidden;
+`;
+
+export const DarkenScreen = styled.View<ScreenProps>`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: ${(props: ScreenProps) => (props.cardActive ? 'flex' : 'none')};
 `;
 
 export const CouponsHeader = styled.View`
