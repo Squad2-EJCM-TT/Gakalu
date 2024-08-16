@@ -27,6 +27,7 @@ model Usuario {
   carrinho  Carrinho?
   produto   Produto[]
   cupom     Cupom[]
+
 }
 
 enum Role {

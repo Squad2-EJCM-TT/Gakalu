@@ -1,20 +1,24 @@
 import styled from 'styled-components/native';
 
-export const ButtonStyle = styled.Pressable`
+export const ButtonStyle = styled.Pressable.attrs({ButtonStyleContainer: {
+  shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+}})`
   background-color: #0332FC;
   border-radius: 15px;
   height: 56px;
-  width: 136px;
-  padding: 8px;
+  width: 149px;
+  padding: 15px 30px;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  shadow-color: #0375FF4F;
-  elevation: 2;
+  margin-top: 10px;
+  box-sizing: border-box;
 `;
 
 export const TextButton = styled.Text`
   color: #fff;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
 `;
