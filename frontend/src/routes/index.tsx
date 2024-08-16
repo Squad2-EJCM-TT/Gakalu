@@ -13,6 +13,7 @@ import CadastroProduto from '../pages/CadastroProduto';
 import NovosProdutos from '../pages/NovosProdutos';
 import Carrinho from '../pages/Carrinho';
 import Coupons from '../pages/Coupons';
+import SellerHome from '../pages/SellerHome';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ function Route() {
         <Stack.Screen name="NovosProdutos" component={NovosProdutos} />
         <Stack.Screen name="Carrinho" component={Carrinho} />
         <Stack.Screen name="Coupons" component={Coupons} />
+        <Stack.Screen name="SellerHome" component={SellerHome} />
       </Stack.Navigator>
     </NavigationContainer>
   );
