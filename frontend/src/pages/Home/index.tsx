@@ -23,7 +23,7 @@ export default function Home(){
 
     return (
         <>
-            <Header/>
+            <Header vendedor={false}/>
             <Container>
                 <Banner>
                     <BannerImage source={require("../../assets/banner/bannerImage1.png")}></BannerImage>
@@ -58,7 +58,7 @@ export default function Home(){
                     ))}
                 </ProductsDisplay>
             </Container>
-            <Footer/>
+            <Footer userType={{ vendedor: false }}/>
         </>
     );
 }
