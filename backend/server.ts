@@ -1,11 +1,8 @@
 import express from 'express';
 import configDotenv from './src/config/dotenv';
 // import cors from 'cors';
-<<<<<<< HEAD
-// import routes from './src/routes/routes';
-=======
->>>>>>> 4d1d88d9a2431f0cbe8477bc877eff7f228454f0
 import routes from './src/routes/routes';
+import path from 'path'
 
 configDotenv();
 
@@ -15,10 +12,6 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(cors());
-<<<<<<< HEAD
-//app.use(routes);
-=======
->>>>>>> 4d1d88d9a2431f0cbe8477bc877eff7f228454f0
 app.use(routes);
 
 app.get('/', (req, res) => {
@@ -29,3 +22,4 @@ app.listen(port, () => {
 console.log(`${process.env.APP_NAME} app listening at http://localhost:${port}`);
 });
     
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

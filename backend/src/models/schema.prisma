@@ -54,7 +54,7 @@ model Produto{
   CidadeOrigem  String[]
   Categoria   String[]
   Descricao   String[]
-  Foto        String[] 
+  Foto        String?
   Avaliacao   Float
 
   usuario     Usuario   @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
@@ -89,6 +89,5 @@ model ProdutoCarrinho{
 
   @@id([idUsuario, idProduto])
 }
-
 
 

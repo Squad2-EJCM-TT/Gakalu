@@ -8,7 +8,7 @@ class CarrinhoController {
     public async create(request:Request, response: Response){
         try{
             const {id} = request.body;
-            const usuariocarrinho = await prisma.carrinho.findUnique({
+            const usuariocarrinho = await prisma.usuario.findUnique({
                 where: {idUsuario: Number(id)}
             })
             if (!usuariocarrinho){
