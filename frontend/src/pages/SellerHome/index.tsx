@@ -1,10 +1,12 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Product from "../../components/Product";
+import { useNavigation, useRoute } from "@react-navigation/native"
 import { Lupa, Search } from "../Home/style";
-import { Container, Line, ProductsSectionContainer, ProductsSectionTitle, SellerProductsDisplayContainer, SellerSearchContainer } from "./style";
+import { Container, Line, ProductsSectionContainer, ProductsSectionTitle, SellerProductsDisplayContainer, SellerSearchContainer, Circle, PlusSign } from "./style";
 
 export default function SellerHome(){
+    const navigation = useNavigation();
     const products = [
         { visible: true, index: 1, title: "The Legend of Zelda: Breath of the Wild (Nintendo Switch)", location: "Rio de Janeiro", price: "R$ 98.99" },
         { visible: true, index: 2, title: "COOLER DEEPCOOL PARA AMD CK-AM209, DP-ACAL-A09", location: "Minas Gerais", price: "R$ 25.98" },
@@ -37,7 +39,11 @@ export default function SellerHome(){
                     />
                 ))}
             </SellerProductsDisplayContainer>
+            <Circle onPress={()=> navigation.navigate('NovosProdutos' as never)}>
+                <PlusSign>+</PlusSign>
+            </Circle>
         </Container>
+
         <Footer userType={{ vendedor: true }}/>
         </>
     )

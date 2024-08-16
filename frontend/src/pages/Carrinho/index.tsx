@@ -15,7 +15,7 @@ export default function Carrinho () {
     return (
         <Container>
             <CabecalhoContainer>
-                <SetaVoltar>
+                <SetaVoltar  onPress={() => navigation.goBack()}>
                 <SetaImg source={require("../../assets/SetaEsquerda.svg")}/>
                 </SetaVoltar>
                 <MeioCabecalho>

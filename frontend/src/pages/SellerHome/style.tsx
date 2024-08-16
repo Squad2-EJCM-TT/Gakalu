@@ -39,4 +39,23 @@ export const Line = styled.View`
     background-color: #DDDFDE;
 `;
 
+export const Circle = styled.Pressable`
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0332FC;
+`;
+
+export const PlusSign = styled.Text`
+   font-size: 30px;
+   font-weight: 300;
+   color: #FFFFFF;
+`;
+
 export const SellerProductsDisplayContainer = styled(ProductsDisplayContainer)``;
