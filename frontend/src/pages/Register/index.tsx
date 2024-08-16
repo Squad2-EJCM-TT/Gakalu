@@ -7,11 +7,16 @@ import { useState } from "react"
 import { Controller, useForm, SubmitHandler } from "react-hook-form"
 import CheckBox from '@react-native-community/checkbox'
 import Checkbox from "expo-checkbox"
-import { useNavigation } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
+import UserServices from "../../../services/UserServices"
 
 
 interface FormData {
     nome: string;
+    bairro: string;
+    cidade: string;
+    CEP: number;
+    role: string;
     email: string;
     senha: string;
     checkbox: boolean;
@@ -20,13 +25,21 @@ interface FormData {
 
 const Register = () => {
     
+    const route = useRoute()
+    const valor = route.params || {}
     const navigation = useNavigation();
     const { control, handleSubmit, formState: { errors } } = useForm()
     const onSubmit: SubmitHandler<FormData> = (data) => {
+        data.bairro = ""
+        data.CEP = 0
+        data.cidade = ""
+        data.role = "valor?.cargo"
+        const {checkbox, ...dataSemCheckbox} = data
         if(!data.nome || !data.email || !data.checkbox) {
             console.log("sem nome")
             return
         }
+        UserServices.Register(dataSemCheckbox)
         navigation.navigate("Home" as never);
     }
     const [valueCheckbox, setValueCheckbox] = useState(false)
