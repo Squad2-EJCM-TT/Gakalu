@@ -1,6 +1,8 @@
 import { Text } from "react-native";
 import { BotaoCarrinho, CabecalhoContainer, CarrinhoImg, Container, MeioCabecalho, NumeroItensContainer, NumeroItensTexto, QuantItens, SetaImg, SetaVoltar, TituloCabecalho, ProductsDisplay, InferiorContainer, HorizontalContainer, SubFrete, Valor, TotalTexto, ValorTotal, BotaoCupom, CumpomIcone, CupomTexto, BotaoContinuar, BotaoTexto } from "./style";
 import Product from "../../components/Product";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function Carrinho () {
     const products = [
@@ -9,7 +11,7 @@ export default function Carrinho () {
         { visible: true, index: 3, title: "HEADSET GAMER MULTI WARRIOR", location: "São Paulo", price: "R$ 83.99" },
         { visible: true, index: 4, title: "FONE DE OUVIDO MULTI HEADPHONE POP PRETO PH053", location: "Acre", price: "R$ 31.98" },
     ];
-    
+    const navigation = useNavigation()
     return (
         <Container>
             <CabecalhoContainer>
@@ -57,7 +59,7 @@ export default function Carrinho () {
                             <CumpomIcone source={require("../../assets/icons/CupomIcone.svg")}/>
                             <CupomTexto>Usar Cupom</CupomTexto>
                         </BotaoCupom>
-                        <BotaoContinuar>
+                        <BotaoContinuar onPress={() => navigation.navigate("Endereco" as never)}>
                             <BotaoTexto>Continuar</BotaoTexto>
                         </BotaoContinuar>
                     </HorizontalContainer>

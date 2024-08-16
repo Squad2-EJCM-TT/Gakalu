@@ -88,7 +88,7 @@ export default function Products() {
     return (
         <>
             <Container>
-                <Header />
+                <Header vendedor = {true}/>
                 <ProductsTitle>Peças de Computadores</ProductsTitle>
                 <ProductsNavigationContainer>
                     <OptionPressable onPress={() => handleToggle("Todos")}>
@@ -124,7 +124,7 @@ export default function Products() {
                     ))}
                 </ProductsDisplayContainer>
             </Container>
-            <Footer />
+            <Footer userType={{vendedor: false}}/>
         </>
     );
 }

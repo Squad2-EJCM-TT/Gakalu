@@ -34,7 +34,7 @@ export default function Footer({ userType }: Props){
             </ButtonFooter>
             }
             
-            <ButtonFooter>
+            <ButtonFooter onPress={() => navigation.navigate("Carrinho" as never)}>
                 <Icon carrinho source={require("../../assets/icons/carrinho.png")}></Icon>
             </ButtonFooter>
         </Container>

@@ -1,6 +1,6 @@
 import styled from "styled-components/native"
 
-export const Botao = styled.Pressable `
+export const Botao = styled.View `
     width: 100%;
     height: 69px;
     background-color: #0332FC;
