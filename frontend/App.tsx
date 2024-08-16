@@ -8,6 +8,7 @@ import Register from './src/pages/Register';
 import Confirmacao from "./src/pages/Confirmacao";
 import DetalhesJogos from "./src/pages/DetalhesJogos";
 import Route from './src/routes';
+import Carrinho from './src/pages/Carrinho';
 
 export default function App() {
   return (
