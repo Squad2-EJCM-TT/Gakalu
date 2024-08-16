@@ -2,6 +2,7 @@ import express from 'express';
 import configDotenv from './src/config/dotenv';
 // import cors from 'cors';
 import routes from './src/routes/routes';
+import path from 'path'
 
 configDotenv();
 
@@ -21,3 +22,4 @@ app.listen(port, () => {
 console.log(`${process.env.APP_NAME} app listening at http://localhost:${port}`);
 });
     
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

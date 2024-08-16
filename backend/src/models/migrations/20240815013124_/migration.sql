@@ -44,7 +44,8 @@ CREATE TABLE "Produto" (
 
 -- CreateTable
 CREATE TABLE "Carrinho" (
-    "idUsuario" SERIAL NOT NULL,
+    "idUsuario" INTEGER NOT NULL,
+    "valorTotal" DECIMAL(65,30) NOT NULL,
 
     CONSTRAINT "Carrinho_pkey" PRIMARY KEY ("idUsuario")
 );
@@ -58,7 +59,8 @@ CREATE TABLE "Favoritos" (
 
 -- CreateTable
 CREATE TABLE "ProdutoCarrinho" (
-    "idUsuario" SERIAL NOT NULL,
+    "idUsuario" INTEGER NOT NULL,
+    "quantidadeMesmoProduto" INTEGER NOT NULL,
     "idProduto" INTEGER NOT NULL,
 
     CONSTRAINT "ProdutoCarrinho_pkey" PRIMARY KEY ("idUsuario","idProduto")
