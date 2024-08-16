@@ -1,12 +1,11 @@
 import { Botao, TextoBotao } from "./style";
 type Props = {
     texto: string;
-    onClick: any;
 }
 
-export default function BotaoPreto ({texto, onClick}: Props) {
+export default function BotaoPreto ({texto}: Props) {
     return(
-        <Botao onPress={onClick}>
+        <Botao>
             <TextoBotao>{texto}</TextoBotao>
         </Botao>
     )

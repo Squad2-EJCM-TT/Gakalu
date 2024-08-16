@@ -57,3 +57,18 @@ export const ContainerBotoes = styled.View `
     margin-bottom: 80px;
 
 `
+export const Botao = styled.Pressable `
+width: 100%;
+height: 69px;
+background-color: #0F0F0F;
+border-radius: 2px;
+justify-content: center;
+align-items: center;    
+border-radius: 15px;
+
+`
+export const TextoBotao = styled.Text `
+color: #FFFFFF;
+font-weight: 800;
+font-size: 24px;    
+`
