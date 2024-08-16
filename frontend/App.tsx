@@ -12,6 +12,7 @@ import NovosProdutos from './src/pages/NovosProdutos';
 import CadastroProduto from './src/pages/CadastroProduto';
 
 import Route from './src/routes';
+import Carrinho from './src/pages/Carrinho';
 
 export default function App() {
   return (

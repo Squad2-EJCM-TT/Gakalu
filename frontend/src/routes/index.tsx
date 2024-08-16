@@ -11,13 +11,15 @@ import Confirmacao from '../pages/Confirmacao';
 import Endereco from '../pages/Endereco';
 import CadastroProduto from '../pages/CadastroProduto';
 import NovosProdutos from '../pages/NovosProdutos';
+import Carrinho from '../pages/Carrinho';
+import Coupons from '../pages/Coupons';
 
 const Stack = createStackNavigator();
 
 function Route() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+      <Stack.Navigator initialRouteName="Carrinho" screenOptions={{headerShown: false}}>
         <Stack.Screen name="QuemVc" component={QuemVc} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
@@ -28,6 +30,8 @@ function Route() {
         <Stack.Screen name="Endereco" component={Endereco} />
         <Stack.Screen name="CadastroProduto" component={CadastroProduto} />
         <Stack.Screen name="NovosProdutos" component={NovosProdutos} />
+        <Stack.Screen name="Carrinho" component={Carrinho} />
+        <Stack.Screen name="Coupons" component={Coupons} />
       </Stack.Navigator>
     </NavigationContainer>
   );
