@@ -5,6 +5,7 @@ import Button from "../../components/Button"
 import LogoContainer from "../../components/LogoContainer"
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { useNavigation } from "@react-navigation/native"
+import UserServices from "../../../services/UserServices"
 
 interface LoginData {
     nome: string;
@@ -16,6 +17,9 @@ const Login = () => {
     const navigation = useNavigation();
     const {control,handleSubmit, formState: {errors}} = useForm()
     const onSubmit: SubmitHandler<LoginData> = (data) => {
+        UserServices.Login(data).then(response => {
+            console.log(response)
+        })
         if(!data.nome || !data.senha) {
             console.log("sem nome")
             return
