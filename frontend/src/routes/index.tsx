@@ -8,6 +8,9 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import DetalhesJogos from '../pages/DetalhesJogos';
 import Confirmacao from '../pages/Confirmacao';
+import Endereco from '../pages/Endereco';
+import CadastroProduto from '../pages/CadastroProduto';
+import NovosProdutos from '../pages/NovosProdutos';
 import Carrinho from '../pages/Carrinho';
 import Coupons from '../pages/Coupons';
 
@@ -23,6 +26,10 @@ function Route() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Products" component={Products} />
         <Stack.Screen name="DetalhesJogos" component={DetalhesJogos} />
+        <Stack.Screen name="Confirmacao" component={Confirmacao} />
+        <Stack.Screen name="Endereco" component={Endereco} />
+        <Stack.Screen name="CadastroProduto" component={CadastroProduto} />
+        <Stack.Screen name="NovosProdutos" component={NovosProdutos} />
         <Stack.Screen name="Carrinho" component={Carrinho} />
         <Stack.Screen name="Coupons" component={Coupons} />
       </Stack.Navigator>

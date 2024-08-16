@@ -9,7 +9,7 @@ export const ButtonStyle = styled.Pressable.attrs({ButtonStyleContainer: {
   background-color: #0332FC;
   border-radius: 15px;
   height: 56px;
-  width: 149px;
+  max-width: fit-content;
   padding: 15px 30px;
   align-items: center;
   justify-content: center;
