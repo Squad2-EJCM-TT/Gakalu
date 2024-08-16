@@ -14,6 +14,7 @@ import NovosProdutos from '../pages/NovosProdutos';
 import Carrinho from '../pages/Carrinho';
 import Coupons from '../pages/Coupons';
 import SellerHome from '../pages/SellerHome';
+import RegisterVendedor from '../pages/Register Vendedor';
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,8 @@ function Route() {
       <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
         <Stack.Screen name="QuemVc" component={QuemVc} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Register" component={Register}/>
+        <Stack.Screen name="RegisterVendedor" component={RegisterVendedor} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Products" component={Products} />
         <Stack.Screen name="DetalhesJogos" component={DetalhesJogos} />

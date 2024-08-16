@@ -10,7 +10,7 @@ const QuemVc = () => {
             <Logo source={require('../../assets/logo.png')}/>
             <TextTitulo>Quem você quer ser?</TextTitulo>
             <Button content="Comprador" onClick={() => navigation.navigate("Register" as never)}/>
-            <Button content="Vendedor" onClick={() => navigation.navigate("Register" as never)}/>
+            <Button content="Vendedor" onClick={() => navigation.navigate("RegisterVendedor" as never)}/>
         </Container>
     )
 }
