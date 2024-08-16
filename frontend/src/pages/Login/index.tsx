@@ -6,6 +6,8 @@ import LogoContainer from "../../components/LogoContainer"
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { useNavigation } from "@react-navigation/native"
 import UserServices from "../../../services/UserServices"
+import { useEffect, useState } from "react"
+import Splash from "../Splash.tsx"
 
 interface LoginData {
     nome: string;
@@ -26,8 +28,18 @@ const Login = () => {
         }
         console.log(data)
     }
+    const [Carregando, setCarregando] = useState(true);
+    useEffect (() => {
+        const timer = setTimeout (()=> {
+            setCarregando(false);
+        }, 3000);
 
+        return () => clearTimeout(timer);
+    }, []);
+    
     return (
+        <>
+        {Carregando && (<Splash/>)}
         <Container>
             <View>
                 <LogoGakalu source={require('../../assets/logo.png')}/>
@@ -60,7 +72,7 @@ const Login = () => {
                 </Pressable>
             </TextConta>
         </Container>
-    
+        </>
 
     )
 }

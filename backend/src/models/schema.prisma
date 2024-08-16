@@ -13,79 +13,83 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario{
-    idUsuario  Int       @id @default(autoincrement())
-    role       Role      
-    nome       String[]   
-    hesh       String[]
-    email      String[]  @unique  
-    salt       String[]
-    bairro      String[]
-    CEP         Int
-    cidade      String[]
-    favoritos  Favoritos?
-    carrinho   Carrinho?
-    produto    Produto[]
-    cupom      Cupom[]
+
+model Usuario {
+  idUsuario Int        @id @default(autoincrement())
+  role      Role
+  nome      String
+  hesh      String
+  email     String     @unique
+  salt      String
+  bairro    String
+  CEP       Int
+  cidade    String
+  favoritos Favoritos?
+  carrinho  Carrinho?
+  produto   Produto[]
+  cupom     Cupom[]
+
 }
 
-
-
-enum Role{
+enum Role {
   COMPRADOR
   VENDEDOR
 }
 
 model Cupom {
-  idCupom     Int       @id @default(autoincrement())
-  TipoCupom   String[] 
-  Validade    DateTime
-  Codigo      String[]  @unique
-  Regras      String[]
+  idCupom   Int      @id @default(autoincrement())
+  TipoCupom String[]
+  Validade  DateTime
+  Codigo    String[] @unique
+  Regras    String[]
 
-  usuario    Usuario[]
-  carrinho  Carrinho[]
+  usuario  Usuario[]
+  carrinho Carrinho[]
 }
 
-model Produto{
-  idProduto   Int       @id @default(autoincrement())
-  Nome        String[]
-  Valor       Float
-  CidadeOrigem  String[]
-  Categoria   String[]
-  Descricao   String[]
-  Foto        String[] 
-  Avaliacao   Float
 
-  usuario     Usuario   @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
-  idUsuario   Int
+model Produto {
+  idProduto    Int      @id @default(autoincrement())
+  Nome         String
+  Valor        Float
+  CidadeOrigem String
+  Categoria    String[]
+  Descricao    String
+  Foto         String[]
+  Avaliacao    Float    @default(0)
+
+  usuario   Usuario @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
+  idUsuario Int
 
   produtoCarrinho ProdutoCarrinho[]
-  favoritos Favoritos[]
+  favoritos       Favoritos[]
 }
 
+
 model Carrinho{
-  idUsuario Int           @id @default(autoincrement())
+  idUsuario Int           @id
+  valorTotal Decimal
   usuario Usuario @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
   produto ProdutoCarrinho[]
   cupom Cupom[]
+
 }
 
-model Favoritos{
-  idUsuario Int           @id @default(autoincrement())
-  usuario Usuario @relation(fields: [idUsuario], references: [idUsuario], onDelete : Cascade)
-  produto Produto[]
+model Favoritos {
+  idUsuario Int       @id @default(autoincrement())
+  usuario   Usuario   @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
+  produto   Produto[]
 }
+
 
 model ProdutoCarrinho{
-  idUsuario Int   @default(autoincrement())
+  idUsuario Int  
   carrinho Carrinho @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
+  quantidadeMesmoProduto Int 
+
 
   idProduto Int
-  produto Produto @relation(fields: [idProduto], references: [idProduto], onDelete: Cascade)
+  produto   Produto @relation(fields: [idProduto], references: [idProduto], onDelete: Cascade)
 
   @@id([idUsuario, idProduto])
 }
-
-
-

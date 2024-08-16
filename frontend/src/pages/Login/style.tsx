@@ -10,6 +10,7 @@ export const Container = styled.View`
   justify-content: flex-start;
   padding-top: 100px;
   background-color: #F3F3F3;
+  position: relative;
 `;
 
 export const LogoGakalu = styled.Image`
