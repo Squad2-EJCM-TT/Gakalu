@@ -7,13 +7,16 @@ import { useNavigation } from "@react-navigation/native";
 export default function DetalhesJogos () {
 const [Curtida, setCurtida] = useState (true) 
 const navigation = useNavigation();
+
+const [products, setProducts] = useState({ visible: true, index: 1, title: "The Legend of Zelda: Breath of the Wild (Nintendo Switch)", category: "Jogos", price: "R$ 98.99"});
+const [vendedor, setVendedor] = useState({vendedor: "Lucas Santos"})
     return (
         <Detalhes> 
            <CabecalhoContainer>
             <SetaVoltar onPress={() => navigation.goBack()}>
               <SetaImg source={require("../../assets/SetaEsquerda.svg")}/>
             </SetaVoltar>
-            <TituloCabecalho>Titulo</TituloCabecalho>
+            <TituloCabecalho>Detalhes</TituloCabecalho>
             <BotaoCarrinho>
                 <NumeroItensContainer>
                     <NumeroItensTexto>2</NumeroItensTexto>
@@ -32,16 +35,12 @@ const navigation = useNavigation();
             </ImagemContainer>  
 
             <NomePrecoContainer>
-                <CategoriaProduto>Jogos</CategoriaProduto>
-                <NomeProduto>The Legend of Zelda: Breath of the Wild Nintendo Switch</NomeProduto>
+                <CategoriaProduto>{products.category}</CategoriaProduto>
+                <NomeProduto>{products.title}</NomeProduto>
                 <PrecoAvalContainer>
-                    <Preco>R$ 98,99</Preco>
+                    <Preco>{products.price}</Preco>
                     <EstrelaContainer>
-                        <Estrela source={require("../../assets/Estrela.svg")}/>
-                        <Estrela source={require("../../assets/Estrela.svg")}/>
-                        <Estrela source={require("../../assets/Estrela.svg")}/>
-                        <Estrela source={require("../../assets/Estrela.svg")}/>
-                        <Estrela source={require("../../assets/Estrela.svg")}/>
+                        {Array(5).fill(<Estrela source={require("../../assets/Estrela.svg")}/>)} 
                     </EstrelaContainer>
                 </PrecoAvalContainer>
             </NomePrecoContainer>    
@@ -49,13 +48,9 @@ const navigation = useNavigation();
             <PerfilLojaContainer>
                 <PerfilAvalContainer>
                     <FotoPerfil source={require("../../assets/PerfilFoto.svg")}/>
-                    <NomePerfil>Lucas Santos</NomePerfil>
+                    <NomePerfil>{vendedor.vendedor}</NomePerfil>
                     <EstrelaPerfilContainer>
-                        <EstrelaPerfil source={require("../../assets/Estrela.svg")}/>
-                        <EstrelaPerfil source={require("../../assets/Estrela.svg")}/>
-                        <EstrelaPerfil source={require("../../assets/Estrela.svg")}/>
-                        <EstrelaPerfil source={require("../../assets/Estrela.svg")}/>
-                        <EstrelaPerfil source={require("../../assets/Estrela.svg")}/>
+                        {Array(5).fill (<EstrelaPerfil source={require("../../assets/Estrela.svg")}/>)}
                     </EstrelaPerfilContainer>
                 </PerfilAvalContainer>
                 
