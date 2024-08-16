@@ -9,7 +9,7 @@ export default function Footer(){
             <ButtonFooter onPress={() => navigation.navigate("Home" as never)}>
                 <Icon home source={require("../../assets/icons/home.png")}></Icon>
             </ButtonFooter>
-            <ButtonFooter>
+            <ButtonFooter onPress={() => navigation.navigate("Coupons" as never)}>
                 <Icon cupom source={require("../../assets/icons/cupom.png")}></Icon>
             </ButtonFooter>
             <ButtonFooter>

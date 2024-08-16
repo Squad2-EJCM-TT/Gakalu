@@ -60,8 +60,7 @@ class CarrinhoController {
 //update/put carrinho com produtos
 
 //delete produto carrinho
+}
 
 export const carrinhoController = new CarrinhoController();
-
-export { prisma };
 
